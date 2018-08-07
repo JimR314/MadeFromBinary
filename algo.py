@@ -8,9 +8,9 @@ def handle_data(context, data): #function takes data; universe of information. c
     sma_50=hist.mean() #sma is simple moving average, hist takes it from the above defined data set
     sma_20=hist[-20:].mean() #mean of the last 20 days of the history
 
-    if sma_20>sma_50:
-        order_target_percent(context.aapl, 1.0) #sid and amount. 1.0 is 100%
-    elif sma_50>sma_20:
+    if sma_20>sma_50: # If the stock is doing better than normal
+        order_target_percent(context.aapl, 1.0) #sid and amount. 1.0 is 100%. Try to buy more
+    elif sma_50>sma_20: # If the stock is doing worse than normal
         order_target_percent(context.aapl,-1.0) #shorting the company as share price decreases
         
     
